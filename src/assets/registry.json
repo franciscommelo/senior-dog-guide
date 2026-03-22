@@ -1,0 +1,19 @@
+{
+  "articles": [
+    {
+      "slug": "signs-of-dementia-senior-dogs",
+      "category": "health",
+      "tags": ["dementia", "cognitive", "senior dog", "brain health"]
+    },
+    {
+      "slug": "fish-oil-dosage-senior-dogs",
+      "category": "supplements",
+      "tags": ["fish oil", "omega-3", "supplements", "joints"]
+    },
+    {
+      "slug": "how-to-help-old-dog-stiff-legs",
+      "category": "health",
+      "tags": ["stiff legs", "arthritis", "mobility", "joints", "exercise"]
+    }
+  ]
+}

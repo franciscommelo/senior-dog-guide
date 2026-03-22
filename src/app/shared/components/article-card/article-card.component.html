@@ -1,0 +1,49 @@
+<article class="article-card">
+  <a
+    [routerLink]="['/blog', article.category, article.slug]"
+    class="card-image-link"
+    tabindex="-1"
+    aria-hidden="true"
+  >
+    <div class="card-image-wrap">
+      <img
+        [src]="article.heroImage"
+        [alt]="article.heroImageAlt"
+        class="card-image"
+        loading="lazy"
+        onerror="this.src='assets/images/placeholder-dog.jpg'"
+      />
+      <span class="badge badge--{{ article.category }} card-badge">
+        {{ categoryLabel }}
+      </span>
+    </div>
+  </a>
+
+  <div class="card-body">
+    <div class="card-meta">
+      <time [dateTime]="article.date" class="card-date">
+        {{ article.date | date: 'MMMM d, yyyy' }}
+      </time>
+      <span class="card-reading-time">{{ article.readingTime }} min read</span>
+    </div>
+
+    <h3 class="card-title">
+      <a [routerLink]="['/blog', article.category, article.slug]" class="card-title-link">
+        {{ article.title }}
+      </a>
+    </h3>
+
+    <p class="card-excerpt">{{ excerpt }}</p>
+
+    <a
+      [routerLink]="['/blog', article.category, article.slug]"
+      class="card-cta"
+      [attr.aria-label]="'Read ' + article.title"
+    >
+      Read More
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
+  </div>
+</article>

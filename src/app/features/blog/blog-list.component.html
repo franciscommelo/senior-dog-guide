@@ -1,0 +1,65 @@
+<div class="blog-list-page">
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb-bar">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a routerLink="/" class="breadcrumb-link">Home</a>
+        <span class="breadcrumb-sep" aria-hidden="true">›</span>
+        @if (category) {
+          <a routerLink="/blog" class="breadcrumb-link">All Articles</a>
+          <span class="breadcrumb-sep" aria-hidden="true">›</span>
+          <span class="breadcrumb-current">{{ pageTitle }}</span>
+        } @else {
+          <span class="breadcrumb-current">All Articles</span>
+        }
+      </nav>
+    </div>
+  </div>
+
+  <!-- Page header -->
+  <div class="page-header">
+    <div class="container">
+      <h1 class="page-title">{{ pageTitle }}</h1>
+      <p class="page-subtitle">{{ pageDescription }}</p>
+
+      <!-- Category filter pills -->
+      <div class="category-filters">
+        <a
+          routerLink="/blog"
+          class="filter-pill"
+          [class.active]="!category"
+        >All</a>
+        <a routerLink="/blog/health" class="filter-pill" [class.active]="category === 'health'">Health</a>
+        <a routerLink="/blog/supplements" class="filter-pill" [class.active]="category === 'supplements'">Supplements</a>
+        <a routerLink="/blog/nutrition" class="filter-pill" [class.active]="category === 'nutrition'">Nutrition</a>
+        <a routerLink="/blog/comfort" class="filter-pill" [class.active]="category === 'comfort'">Comfort</a>
+        <a routerLink="/blog/breed-guide" class="filter-pill" [class.active]="category === 'breed-guide'">Breed Guides</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Articles grid -->
+  <section class="articles-section">
+    <div class="container">
+      @if (articles.length > 0) {
+        <p class="results-count">
+          {{ articles.length }} {{ articles.length === 1 ? 'article' : 'articles' }} found
+        </p>
+        <div class="articles-grid">
+          @for (article of articles; track article.slug) {
+            <app-article-card [article]="article" />
+          }
+        </div>
+      } @else {
+        <div class="empty-state">
+          <span class="empty-icon" aria-hidden="true">🐾</span>
+          <h2 class="empty-title">No articles yet in this category</h2>
+          <p class="empty-text">We're working on guides for this topic. Check back soon, or explore another category.</p>
+          <a routerLink="/blog" class="btn-primary">Browse All Articles</a>
+        </div>
+      }
+    </div>
+  </section>
+
+</div>

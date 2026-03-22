@@ -1,0 +1,113 @@
+<!-- ── Hero ──────────────────────────────────────── -->
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="hero-content">
+      <span class="hero-eyebrow">Senior Dog Wellness</span>
+      <h1 class="hero-title">
+        Helping Your Best Friend<br>
+        <span class="hero-title-accent">Age Gracefully</span>
+      </h1>
+      <p class="hero-subtitle">
+        Evidence-based guides on health, supplements, nutrition, and comfort —
+        written for the owners of dogs 7 and older.
+      </p>
+      <div class="hero-actions">
+        <a routerLink="/blog" class="btn-primary">
+          Explore All Articles
+        </a>
+        <a routerLink="/blog/health" class="btn-secondary">
+          Start with Health Guides
+        </a>
+      </div>
+      <div class="hero-trust">
+        <span class="trust-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+          Vet-reviewed information
+        </span>
+        <span class="trust-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+          Science-backed guidance
+        </span>
+        <span class="trust-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+          Written with compassion
+        </span>
+      </div>
+    </div>
+    <div class="hero-image-wrap" aria-hidden="true">
+      <div class="hero-image-placeholder">
+        <span class="hero-paw">🐾</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Featured Articles ───────────────────────── -->
+<section class="section featured-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Latest Guides</h2>
+      <a routerLink="/blog" class="section-link">
+        View all articles
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="articles-grid">
+      @for (article of featuredArticles; track article.slug) {
+        <app-article-card [article]="article" />
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ── Categories ─────────────────────────────── -->
+<section class="section categories-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Browse by Topic</h2>
+      <p class="section-subtitle">Find guides tailored to your dog's specific needs</p>
+    </div>
+
+    <div class="categories-grid">
+      @for (cat of categoryCards; track cat.label) {
+        <a [routerLink]="cat.path" class="category-card">
+          <span class="category-icon" aria-hidden="true">{{ cat.icon }}</span>
+          <h3 class="category-name">{{ cat.label }}</h3>
+          @if (cat.count > 0) {
+            <span class="category-count">{{ cat.count }} {{ cat.count === 1 ? 'article' : 'articles' }}</span>
+          } @else {
+            <span class="category-count">Coming soon</span>
+          }
+        </a>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ── Email Signup ────────────────────────────── -->
+<section class="section signup-section">
+  <div class="container">
+    <div class="signup-card">
+      <div class="signup-content">
+        <span class="signup-icon" aria-hidden="true">🐾</span>
+        <h2 class="signup-title">Weekly Tips for Senior Dog Owners</h2>
+        <p class="signup-text">
+          Get the latest guides, product reviews, and senior dog health tips delivered to your inbox — no fluff, just useful advice.
+        </p>
+        <form class="signup-form" (submit)="$event.preventDefault()">
+          <input
+            type="email"
+            placeholder="Your email address"
+            class="signup-input"
+            aria-label="Email address"
+          />
+          <button type="submit" class="btn-primary signup-btn">
+            Subscribe Free
+          </button>
+        </form>
+        <p class="signup-note">No spam, ever. Unsubscribe at any time.</p>
+      </div>
+    </div>
+  </div>
+</section>

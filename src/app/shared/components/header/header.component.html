@@ -1,0 +1,66 @@
+<header class="site-header">
+  <div class="container header-inner">
+    <!-- Logo -->
+    <a routerLink="/" class="logo" (click)="closeMenu()">
+      <span class="logo-icon">🐾</span>
+      <span class="logo-text">
+        <span class="logo-main">Senior Dog Guide</span>
+        <span class="logo-tagline">Helping Your Best Friend Age Gracefully</span>
+      </span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="nav-desktop" aria-label="Main navigation">
+      <ul class="nav-list">
+        @for (link of navLinks; track link.path) {
+          <li>
+            <a
+              [routerLink]="link.path"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+              class="nav-link"
+            >
+              {{ link.label }}
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+
+    <!-- Mobile hamburger -->
+    <button
+      class="hamburger"
+      [class.open]="mobileMenuOpen()"
+      (click)="toggleMenu()"
+      aria-label="Toggle navigation menu"
+      [attr.aria-expanded]="mobileMenuOpen()"
+    >
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Navigation Drawer -->
+  <nav
+    class="nav-mobile"
+    [class.open]="mobileMenuOpen()"
+    aria-label="Mobile navigation"
+  >
+    <ul class="nav-mobile-list">
+      @for (link of navLinks; track link.path) {
+        <li>
+          <a
+            [routerLink]="link.path"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+            class="nav-mobile-link"
+            (click)="closeMenu()"
+          >
+            {{ link.label }}
+          </a>
+        </li>
+      }
+    </ul>
+  </nav>
+</header>
